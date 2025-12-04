@@ -1,0 +1,5 @@
+site_name: 基于大语言模型的AI小说工具使用指南
+site_url: https://mydomain.org/mysite
+theme:
+  name: material
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
