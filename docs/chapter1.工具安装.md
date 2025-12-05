@@ -75,10 +75,14 @@ pip install <包名>
 ```
 ### 在此步骤中可能出现的问题
 ![alt text](image.png)
-==很可能是没有激活虚拟环境==
+==很可能是没有激活虚拟环境，在IDE中使用
+```bash
+source venv/Scripts/activate
+```
+激活环境，其中venv这个路径需要根据自己的虚拟环境创建的位置看情况修改==
 ---
 
-## ▶ 6. 启动主程序（GUI）
+## 5. 启动主程序（GUI）
 
 安装完成后，运行主程序：
 
@@ -90,10 +94,10 @@ python main.py
 
 ---
 
-## ⚙️ 7. 基础配置说明（config.json）
+## 6. 基础配置说明（config.json）
 
-程序会读取 `config.json` 用来配置模型、API Key 与小说生成参数。
-示例配置如下（来自 README）：
+程序会读取 `config.json` 用来配置模型、API Key与小说生成参数。
+示例配置如下（来自README）：
 
 ```json
 {
@@ -118,7 +122,7 @@ python main.py
 
 ---
 
-## 🧩 8. 本地模型用户（Ollama）注意事项
+## 7. 本地模型用户（Ollama）注意事项
 
 如果你使用本地模型作为 Embedding，启动命令为：
 
@@ -131,9 +135,9 @@ ollama pull nomic-embed-text
 
 ---
 
-## 📘 9. 可选：打包为可执行文件（免 Python 环境）
+## 8. 可选：打包为可执行文件（免Python环境）
 
-如果你希望在没有 Python 的电脑上使用，可以通过 PyInstaller 打包：
+如果你希望在没有Python的电脑上使用，可以通过PyInstaller打包：
 
 ```bash
 pip install pyinstaller
@@ -148,7 +152,7 @@ dist/main.exe
 
 ---
 
-## 🎯 10. 安装完成后你可以做什么？
+## 9. 安装完成后你可以做什么？
 
 图形界面提供四步式操作：
 
@@ -161,29 +165,7 @@ dist/main.exe
 
 ---
 
-## 🧩 11. 常见问题（FAQ）
-
-### ❓ 1. "Expecting value: line 1 column 1" 错误？
-
-API 没有正常返回 JSON，大概率是：
-
-* API Key 错误
-* Base URL 无效
-* 网络异常返回了 HTML
-
-### ❓ 2. 504 Gateway Timeout？
-
-通常为 API 服务不稳定，可稍后再试或更换接口。
-
-### ❓ 3. 如何切换 Embedding 服务？
-
-在 GUI 的设置面板直接修改对应接口、模型名称和 URL 即可。
-
-更多细节可参考项目 Issues。
-
----
-
-## 📌 总结
+## 总结
 
 现在你已经完成了：
 
@@ -191,12 +173,4 @@ API 没有正常返回 JSON，大概率是：
 ✔ 安装环境与依赖
 ✔ 配置模型与参数
 ✔ 启动 GUI 编辑器
-✔ 可选：打包为 EXE
-
-接下来就可以让 AI 帮你写小说了！
-
-如果你希望我继续帮你写 **《如何使用此工具高效生成小说》** 或 **《使用心得分享》** 也可以告诉我，我可以为你继续生成下一篇博客文章 😊
-
----
-
-如果你希望我把这篇文章 **美化成适合 Material for MkDocs 的特定风格（包含 admonition、tabs、cards 等）**，也可以继续告诉我，我可以帮你增强排版效果！
+✔ 可选：打包为EXE
