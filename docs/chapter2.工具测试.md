@@ -53,10 +53,19 @@ qwen2.5-7b-instruct
 
 ---
 
-## 2. 下载项目源代码
+## 2. ![alt text](image-2.png) Embedding Settings
 
-你可以使用Git下载项目，也可以从GitHub直接获取压缩包。
-==额外的报错情况：如果遇到openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Value error, contents is neither str nor list of str.: input.contents', 'type': 'InvalidParameter', 'param': None, 'code': 'InvalidParameter'}, 'id': '9515af7c-c156-4a38-9c75-2724b2e63a37', 'request_id': '9515af7c-c156-4a38-9c75-2724b2e63a37'}这种类型的报错请按照以下步骤修复==
+**本文作者在此处使用的向量化的模型是来自阿里百炼的大模型**
+1. 在百炼平台注册账号并登录之后在主账号创建一个api key（作者充了100元的api额度），将key复制到第一个文本框中
+2. 在接口格式中选择OpenAI的格式因为百炼的api有openai兼容
+3. 在Embedding Base URL中请按照自己使用的模型的文档中的baseurl的样式进行填写，如果和本文作者一样使用了百炼模型则使用
+```url
+https://dashscope.aliyuncs.com/compatible-mode/v1
+```
+4. Embedding Model Name选择自己想要尝试的大模型的正式名字，正如上一个section中提及的，从官方文档中寻找
+5. Retrieval Top-K控制：系统从向量数据库中找出多少条“最相关的信息”提供给LLM作为上下文，具体来说就是K越大，模型参考的文档越多，剧情一致性越强，但相应的消耗的tokens就会变多，甚至过大会导致模型难以识别重点可以根据自己的情况进行调整
+
+==报错情况：如果遇到openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Value error, contents is neither str nor list of str.: input.contents', 'type': 'InvalidParameter', 'param': None, 'code': 'InvalidParameter'}, 'id': '9515af7c-c156-4a38-9c75-2724b2e63a37', 'request_id': '9515af7c-c156-4a38-9c75-2724b2e63a37'}这种类型的报错请按照以下步骤修复==
 1.打开项目里的 embedding_adapters.py
 2. 找到self._embedding = OpenAIEmbeddings那一段初始化代码
 3.在参数里加上：check_embedding_ctx_length=False，形如
@@ -69,33 +78,9 @@ self._embedding = OpenAIEmbeddings(
 )
 ```
 4.保存文件，重启你的GUI，再点一次测试Embedding配置
-### ✔ 方法一：使用Git克隆仓库
 
-打开IDE后（例如PyCharm/VSCode/云端环境，本文使用的是PyCharm）在终端输入以下命令
-
-```bash
-git clone https://github.com/YILING0013/AI_NovelGenerator
-```
-将项目代码克隆到本地/云端
-### ✔ 方法二：直接下载ZIP
-
-在 GitHub 项目主页点击 **“Download ZIP”** 解压后即可。
-
----
-
-## 3. Windows用户可能需要安装C++构建工具（可选）
-
-部分依赖库需要编译。如果安装过程中出现无法构建某些包的情况，可以安装：
-
-**Visual Studio Build Tools**：
-[https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)
-建议下载，本文已经下载
-
-安装时务必勾选：
-
-* ✔ **C++ 桌面开发**
-
-（默认只安装 MSBuild，无法满足依赖编译需求）
+## 3. ![alt text](image-3.png) Config Choose
+此项中几乎都是各种任务的配置，需要说明的地方不多，大家请根据自己能调用的大模型api和大模型对于各种任务的表现合理配置
 
 ---
 
